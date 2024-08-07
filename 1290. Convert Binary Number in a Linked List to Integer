@@ -1,0 +1,26 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    
+    def getDecimalValue(self, head):
+        # value = []
+        # b = 0
+        # c = 0
+        # current_node = head
+        # while current_node is not None:
+        #     value.append(current_node.val)
+        #     current_node = current_node.next
+        # for i in reversed(value):
+        #     two = 2
+        #     b += i*(2**c)
+        #     c +=1
+        # return b
+
+        res = 0
+        while head:
+            res = res *2 + head.val
+            head = head.next
+        return res
