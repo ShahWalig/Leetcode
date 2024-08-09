@@ -1,0 +1,10 @@
+class Solution(object):
+    def reverseList(self, head):
+        prevase_node = None
+        current_node = head
+        while current_node:
+            next_of_current_node = current_node.next
+            current_node.next = prevase_node
+            prevase_node = current_node
+            current_node = next_of_current_node
+        return prevase_node
