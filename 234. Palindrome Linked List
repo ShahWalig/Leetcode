@@ -1,0 +1,42 @@
+#234. Palindrome Linked List Leetcode Question
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def isPalindrome(self, head):
+        fast, slow = head, head
+
+        #Get head if half list
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+
+        #Revere half list
+        previous = None
+        while slow:
+            tmp = slow.next
+            slow.next = previous
+            previous = slow
+            slow = tmp
+        #Checking Equal or not
+        a = head
+        b = previous
+        while b:
+            if a.val != b.val:
+                return False
+            a = a.next
+            b = b.next
+        return True
+
+        # #extra memory
+        # new_list = []
+        # current_node = head
+        # while current_node:
+        #     new_list.append(current_node.val)
+        #     current_node = current_node.next
+        # reverse = new_list[::-1]
+        # return reverse == new_list
+        
+        
