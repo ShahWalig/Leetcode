@@ -1,0 +1,18 @@
+# Linked List Cycle
+class Solution(object):
+    def hasCycle(self, head):
+        current_node = head
+        fast, slow = head,head
+        if head == None or head.next == None:
+            return False
+
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            current_node = current_node.next
+            if fast == slow:
+                return True
+       
+        return False
+        
+        
