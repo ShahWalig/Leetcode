@@ -1,16 +1,55 @@
 # if want file .py you can visit Data Structure and algorithms repository 
 # Leetcode Question number 203 Remove Linked List Elements 
 
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
 class Solution(object):
     def removeElements(self, head, val):
+        """
+        Removes all nodes with the specified value from the linked list.
 
+        :param head: ListNode, the head of the linked list
+        :param val: int, the value to be removed
+        :return: ListNode, the head of the modified linked list
+        """
+
+        # Remove nodes from the beginning of the list that have the value `val`
         while head and head.val == val:
             head = head.next
-
+        
+        # Initialize current_node to traverse the list starting from the updated head
         current_node = head
+        
+        # Traverse the list to remove nodes with the value `val`
         while current_node and current_node.next:
             if current_node.next.val == val:
+                # Skip the node with the value `val` by changing the link
                 current_node.next = current_node.next.next
             else:
+                # Move to the next node if no removal is needed
                 current_node = current_node.next
+        
+        # Return the new head of the modified list
         return head
+
+        # Alternate approach using a dummy node:
+        # A dummy node is used to simplify handling deletions at the head of the list.
+        # Uncomment the following lines to use the dummy node method.
+        # dummy = ListNode(next=head)
+        # prev, curr = dummy, head
+        # while curr:
+        #     if curr.val == val:
+        #         # Remove the node by updating the previous node's next pointer
+        #         prev.next = curr.next
+        #     else:
+        #         # Move the prev pointer to the current node
+        #         prev = curr
+        #     # Move to the next node
+        #     curr = curr.next
+        # # Return the new head, which is the next of the dummy node
+        # return dummy.next
+
