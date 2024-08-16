@@ -1,0 +1,65 @@
+#Leecode Question number is 2181. Merge Nodes in Between Zeros
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def mergeNodes(self, head):
+        dummy = ListNode(0)
+        odl_current_node = dummy
+        current_node = head.next
+        value = 0
+        while current_node:
+            if current_node.val !=0:
+                value +=current_node.val
+            else:
+                odl_current_node.next = ListNode(value)
+                odl_current_node = odl_current_node.next
+                value = 0
+            
+            current_node = current_node.next
+        return dummy.next
+
+
+        
+        # current_node = head
+        # while current_node.next:
+        #     node = current_node.next
+        #     current_node = current_node.next
+            
+        #     while current_node.next.val != 0:
+        #         node.val += current_node.next.val
+        #         current_node = current_node.next
+        #     current_node = current_node.next
+        #     node.next = current_node.next
+        # return head.next
+
+        
+        
+        
+        
+        
+        # # Extra memory
+
+        # new_list = []
+        # value = 0
+        # current_node = head.next
+
+        # while current_node:
+        #     if current_node.val !=0:
+        #         value += current_node.val
+        #     else:
+        #         new_list.append(value)
+        #         value = 0
+        #     current_node = current_node.next
+        # dummy = ListNode(0)
+        # current = dummy
+        # for num in new_list:
+        #     current.next = ListNode(num)
+        #     current = current.next
+        # return dummy.next
+            
+
+        
