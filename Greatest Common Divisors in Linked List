@@ -1,0 +1,55 @@
+#Python
+#Complexity
+#Time complexity:
+
+#Runtime 82ms Beats 87.89%
+#Space complexity:
+
+#18.21MB Beats 100.00%
+# Initialize the previous node pointer as None and current node pointer as head
+prev = None
+curr = head
+Traverse the list while there are at least two nodes to process
+    while curr and curr.next:
+        # Update the previous node pointer to the current node
+        prev = curr
+        # Move the current node pointer to the next node
+        curr = curr.next
+Get the values of the current and next node
+        a = prev.val
+        b = curr.val
+Compute the Greatest Common Divisor (GCD) of a and b using the Euclidean algorithm
+        while b != 0:
+            remainder = a % b
+            a = b
+            b = remainder
+Create a new node with the GCD value
+        new_node = ListNode(a)
+Insert the new node between the previous node and the current node
+        prev.next = new_node
+        new_node.next = curr
+Update the previous node pointer to the newly created node
+        prev = new_node
+Move the current node pointer to the next node in the list
+        curr = new_node.next  
+Return the modified head of the list
+    return head
+
+# code without comments
+    # prev = None
+    # curr = head
+    # while curr and curr.next:
+    #     prev = curr
+    #     curr = curr.next
+    #     a = prev.val
+    #     b = curr.val
+    #     while b != 0:
+    #         remainder = a % b
+    #         a = b
+    #         b = remainder
+    #     new_node = ListNode(a)
+    #     prev.next = new_node
+    #     new_node.next = curr
+    #     prev = new_node
+    #     curr = new_node.next
+    # return head       
