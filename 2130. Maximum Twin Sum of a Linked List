@@ -1,0 +1,57 @@
+# Initialize the maximum twin sum
+        large = 0
+        # Initialize pointers to find the middle of the linked list
+        fast = head
+        slow = head
+        
+        # Step 1: Find the middle of the linked list
+        while fast and fast.next:
+            fast = fast.next.next  # Move fast pointer two steps at a time
+            slow = slow.next  # Move slow pointer one step at a time
+        
+        # Step 2: Reverse the second half of the linked list
+        prev = None
+        while slow:
+            nxt = slow.next  # Store the next node
+            slow.next = prev  # Reverse the link
+            prev = slow  # Move prev to the current node
+            slow = nxt  # Move to the next node
+        
+        # After the loop, prev points to the head of the reversed second half
+        cur = prev
+        current = head
+        
+        # Step 3: Calculate the maximum twin sum
+        while cur:
+            new_value = current.val + cur.val  # Calculate the twin sum
+            cur = cur.next  # Move to the next node in the reversed second half
+            current = current.next  # Move to the next node in the first half
+            if new_value > large:
+                large = new_value  # Update the maximum twin sum if needed
+        
+        return large  # Return the maximum twin sum
+
+
+
+        # # Code withoud Comments
+        # large = 0
+        # fast = head
+        # slow = head
+        # while fast and fast.next:
+        #     fast = fast.next.next
+        #     slow = slow.next
+        # prev = None
+        # while slow:
+        #     nxt = slow.next
+        #     slow.next = prev
+        #     prev = slow
+        #     slow = nxt
+        # cur = prev
+        # current = head
+        # while cur:
+        #     new_value = current.val + cur.val
+        #     cur = cur.next
+        #     current = current.next
+        #     if new_value > large:
+        #         large = new_value
+        # return large
