@@ -1,0 +1,9 @@
+        res = 0  # Initialize a counter to keep track of the result.
+        for i in operations:
+            # If the operation is decrement (either "--X" or "X--"), decrease the counter.
+            if i == "--X" or i == "X--":
+                res -= 1
+            else:
+                # Otherwise, it's an increment operation ("++X" or "X++"), so increase the counter.
+                res += 1
+        return res  # Return the final result after all operations.
