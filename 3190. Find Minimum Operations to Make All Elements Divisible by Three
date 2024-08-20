@@ -1,0 +1,7 @@
+def minimumOperations(self, nums):
+    res = 0  # Initialize a counter to store the number of operations needed.
+    for i in nums:
+        # Check if the current number is not divisible by 3.
+        if i % 3 != 0:
+            res += 1  # Increment the counter if the number is not divisible by 3.
+   
