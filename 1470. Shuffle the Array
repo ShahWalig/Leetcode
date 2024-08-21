@@ -1,0 +1,37 @@
+class Solution(object):
+    def shuffle(self, nums, n):
+        #res = []
+        # for i in range(n):
+        #     res[i] == nums[i]
+        #     res[n] == nums[n]
+        #     n += 1
+        #return res
+        # # Second method
+        # for i in range(n):
+        #     nums[i] = nums[i]<< 10
+        #     nums[i] = nums[i] | nums[i + n]
+
+        # j = 2 * n -1
+        # for i in range(n - 1, -1 , -1):
+        #     y = nums[i] & (2**10 - 1)
+        #     x = nums[i] >> 10
+        #     nums[j] = y
+        #     nums[j-1] = x
+        #     j -=2
+        # return nums
+        
+        ## Third Method
+        # Embed the second half into the first half using bitwise operations
+        for i in range(n):
+            nums[i] = (nums[i] << 10) | nums[i + n]
+
+        j = 2 * n - 1
+        for i in range(n - 1, -1, -1):
+            y = nums[i] & (2**10 - 1)   # Extract the second half element
+            x = nums[i] >> 10           # Extract the first half element
+            nums[j] = y                 # Place second half element in its correct position
+            nums[j-1] = x               # Place first half element in its correct position
+            j -= 2
+
+        return nums
+        
