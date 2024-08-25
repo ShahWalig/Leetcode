@@ -1,0 +1,19 @@
+#Minimum Number of Moves to Seat Everyone
+class Solution(object):
+    def minMovesToSeat(self, seats, students):
+        # Initialize the result variable to accumulate the total moves needed
+        res = 0
+        
+        # Sort both seats and students to align them optimally
+        seats.sort()
+        students.sort()
+        
+        # Iterate through the sorted lists
+        for i in range(len(seats)):
+            # Calculate the absolute difference between the seat and student position
+            positive_value = abs(seats[i] - students[i])
+            # Add this difference to the result
+            res += positive_value
+        
+        # Return the total number of moves required
+        return res
