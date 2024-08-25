@@ -1,0 +1,20 @@
+# 1431. Kids With the Greatest Number of Candies
+class Solution(object):
+    def kidsWithCandies(self, candies, extraCandies):
+        # Find the maximum number of candies any kid currently has
+        max_candies = max(candies)
+        
+        # Create a list to store the result of whether each kid could have the greatest number of candies
+        new_list = []
+        
+        # Iterate through each kid's current number of candies
+        for i in candies:
+            # Check if adding extraCandies to the current number of candies
+            # results in a number of candies greater than or equal to max_candies
+            if i + extraCandies >= max_candies:
+                new_list.append(True)  # If true, this kid could have the greatest number of candies
+            else:
+                new_list.append(False)  # If false, this kid cannot have the greatest number of candies
+        
+        # Return the list indicating which kids can have the greatest number of candies
+        return new_list
