@@ -1,0 +1,17 @@
+#How Many Numbers Are Smaller Than the Current Number
+class Solution(object):
+    def smallerNumbersThanCurrent(self, nums):
+        add = 0  # Initialize a counter to keep track of numbers smaller than the current number
+        new_list = []  # Create an empty list to store the results
+
+        # Iterate through each number in the list
+        for i in range(len(nums)):
+            # Compare the current number with every other number in the list
+            for j in range(len(nums)):
+                if nums[i] > nums[j]:
+                    add += 1  # Increment the counter if the current number is greater
+            
+            new_list.append(add)  # Append the count to the result list
+            add = 0  # Reset the counter for the next iteration
+
+        return new_list  # Return the final list of counts
