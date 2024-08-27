@@ -1,0 +1,48 @@
+class Solution(object):
+    def countPairs(self, nums, target):
+        """
+        This function counts the number of valid pairs (i, j) in the array 'nums' 
+        where 0 <= i < j < len(nums) and nums[i] + nums[j] < target.
+        
+        Approach 1: Brute Force (O(n^2))
+        - Iterate through all pairs (i, j) with i < j.
+        - Check if the sum of nums[i] + nums[j] is less than the target.
+        - Count the number of valid pairs.
+        
+        Approach 2: Two-Pointer Technique (O(n log n) due to sorting)
+        - Sort the array to enable efficient comparison.
+        - Use two pointers: one starting from the beginning (left) and one from the end (right).
+        - Move the pointers towards each other based on the sum comparison.
+        - Efficiently count the number of valid pairs.
+        """
+
+        # Approach 1: Brute Force
+        """
+        res = 0  # Initialize the counter for valid pairs
+        
+        # Iterate through each element in the array
+        for i in range(len(nums)):
+            # Start j from i+1 to ensure that i < j
+            for j in range(i + 1, len(nums)):
+                # Check if the sum of the pair is less than the target
+                if nums[i] + nums[j] < target:
+                    res += 1  # Increment the counter if the condition is met
+        
+        return res  # Return the total count of valid pairs
+        """
+
+        # Approach 2: Two-Pointer Technique
+        nums.sort()  # Sort the array to use the two-pointer approach
+        left, right = 0, len(nums) - 1  # Initialize two pointers
+        count = 0  # Initialize the counter for valid pairs
+
+        # Loop until the two pointers meet
+        while left < right:
+            # If the sum of nums[left] and nums[right] is less than the target
+            if nums[left] + nums[right] < target:
+                count += (right - left)  # All pairs between left and right are valid
+                left += 1  # Move the left pointer to the right
+            else:
+                right -= 1  # Move the right pointer to the left if the sum is not less than the target
+
+        return count  # Return the total count of valid pairs
