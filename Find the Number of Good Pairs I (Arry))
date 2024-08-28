@@ -1,0 +1,13 @@
+# 3162. Find the Number of Good Pairs I (Arry))
+
+class Solution(object):
+    def numberOfPairs(self, nums1, nums2, k):
+        res = 0  # Initialize the result counter
+        # Iterate through each element in nums1
+        for i in range(len(nums1)):
+            # Iterate through each element in nums2
+            for j in range(len(nums2)):
+                # Check if nums1[i] is divisible by nums2[j] multiplied by k
+                if nums1[i] % (nums2[j] * k) == 0:
+                    res += 1  # Increment the counter if the condition is satisfied
+        return res  # Return the total number of valid pairs
