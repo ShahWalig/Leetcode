@@ -1,0 +1,31 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        # Brute Force Solution (Commented out):
+        # This solution checks each pair of numbers to see if they add up to the target.
+        # It's less efficient because it has a time complexity of O(n^2).
+        #
+        # new_list = []
+        # for i in range(len(nums)):
+        #     for j in range(i + 1, len(nums)):
+        #         if nums[i] + nums[j] == target:
+        #             new_list.append(i)
+        #             new_list.append(j)
+        # return new_list
+
+        # Optimized Solution using Hash Map:
+        # This solution uses a hash map to store the difference between the target
+        # and each number in the list, allowing us to find the solution in O(n) time.
+        prev_map = {}
+        
+        # Iterate over the list, using enumerate to get both index and value
+        for i, n in enumerate(nums):
+            # Calculate the difference needed to reach the target
+            diff = target - n
+            
+            # If the difference exists in the dictionary, a solution is found
+            if diff in prev_map:
+                # Return the indices of the two numbers that add up to the target
+                return [prev_map[diff], i]
+            
+            # Store the current number's index in the dictionary
+            prev_map[n] = i
