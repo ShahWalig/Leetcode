@@ -1,0 +1,25 @@
+class Solution(object):
+    def twoSum(self, numbers, target):
+        # Initialize pointers
+        start = 0  # Start pointer at the beginning of the list
+        end = len(numbers) - 1  # End pointer at the last index
+
+        # Loop until the two pointers meet
+        while start < end:
+            # Calculate the sum of the elements at the current pointers
+            current_sum = numbers[start] + numbers[end]
+            
+            # Check if the current sum is equal to the target
+            if current_sum == target:
+                return [start + 1, end + 1]  # Return 1-based indices of the pair
+            
+            # If the current sum is less than the target, move the start pointer right
+            elif current_sum < target:
+                start += 1  # Increase start to get a larger sum
+            
+            # If the current sum is greater than the target, move the end pointer left
+            else:
+                end -= 1  # Decrease end to get a smaller sum
+
+        # Return an empty list if no valid pair is found
+        return []
