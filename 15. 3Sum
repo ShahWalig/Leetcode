@@ -1,0 +1,35 @@
+class Solution(object):
+    def threeSum(self, nums):
+        res = []  # Initialize a list to store the resulting triplets
+        nums.sort()  # Sort the array to make it easier to handle duplicates and use the two-pointer technique
+        
+        # Iterate through the sorted list with index `index` and value `value`
+        for index, value in enumerate(nums):
+            # Skip the same element to avoid duplicate triplets
+            if index > 0 and value == nums[index - 1]:
+                continue
+            
+            # Initialize two pointers
+            start = index + 1  # Start pointer just after `index`
+            end = len(nums) - 1  # End pointer at the last element
+            
+            # Use the two-pointer technique to find pairs that sum up with `value` to zero
+            while start < end:
+                total = value + nums[start] + nums[end]  # Calculate the total sum of the triplet
+                
+                if total > 0:
+                    end -= 1  # Move the end pointer left to reduce the total
+                elif total < 0:
+                    start += 1  # Move the start pointer right to increase the total
+                else:
+                    # Found a valid triplet
+                    res.append([value, nums[start], nums[end]])
+                    
+                    # Move the start pointer to the right to find new pairs
+                    start += 1
+                    
+                    # Skip duplicate elements for the start pointer
+                    while start < end and nums[start] == nums[start - 1]:
+                        start += 1
+        
+        return res  # Return the list of triplets
