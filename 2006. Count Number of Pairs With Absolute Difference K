@@ -1,0 +1,11 @@
+class Solution(object):
+    def countKDifference(self, nums, k):
+        res = 0
+        # Iterate over each element in the array
+        for i in range(len(nums)):
+            # Compare the current element with the elements that come after it
+            for j in range(i + 1, len(nums)):
+                # Check if the absolute difference between the two elements is equal to k
+                if abs(nums[i] - nums[j]) == k:
+                    res += 1
+        return res
