@@ -1,0 +1,25 @@
+class Solution(object):
+    def mostWordsFound(self, sentences):
+        ## Method 1: Concise Method Using max() with a Generator
+        # This method calculates the word count for each sentence by counting spaces and adding 1,
+        # then uses the max() function to find the sentence with the most words.
+        return max(i.count(' ') + 1 for i in sentences)
+        
+        ## Method 2: Using a Loop and max() to Track the Maximum
+        # This method iterates through each sentence, calculates the word count,
+        # and updates the variable 'large' to always hold the maximum number of words found so far.
+        # large = 0
+        # for i in sentences:
+        #     large = max(large, i.count(' ') + 1)
+        # return large
+
+        ## Method 3: Using a Loop with an if Statement to Track the Maximum
+        # This method also iterates through each sentence, calculates the word count,
+        # and checks if the current word count is larger than the previously recorded maximum ('large').
+        # If it is, 'large' is updated to this new value.
+        # large = 0
+        # for i in sentences:
+        #     current = (i.count(' ') + 1)
+        #     if current > large:
+        #         large = current
+        # return large
