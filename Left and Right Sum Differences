@@ -1,0 +1,34 @@
+#2574. Left and Right Sum Differences
+class Solution(object):
+    def leftRightDifference(self, nums):
+        # Get the total number of elements in nums
+        n = len(nums)
+        
+        # Compute the total sum of all elements in nums
+        total_sum = sum(nums)
+        
+        # Initialize left_sum to 0 and result list to store the differences
+        left_sum = 0
+        result = []
+        
+        # Iterate through each index in the nums array
+        for i in range(n):
+            # Calculate the sum of elements to the right of the current index
+            right_sum = total_sum - left_sum - nums[i]
+            
+            # Append the absolute difference between left_sum and right_sum to the result list
+            result.append(abs(left_sum - right_sum))
+            
+            # Update left_sum to include the current element
+            left_sum += nums[i]
+        
+        # Return the list of absolute differences
+        return result
+        
+        # The following code is an alternative approach with higher time complexity:
+        # new_list = []
+        # for i in range(len(nums)):
+        #     left = sum(nums[:i])
+        #     right = sum(nums[i+1:])
+        #     new_list.append(abs(left - right))
+        # return new_list
