@@ -1,0 +1,32 @@
+#2418. Sort the People
+class Solution(object):
+    def sortPeople(self, names, heights):
+        # Step 1: Create a dictionary to map each height to the corresponding name.
+        # This assumes that all heights are unique.
+        height_name = {}
+
+        # Step 2: Populate the dictionary with heights as keys and names as values.
+        for h, n in zip(heights, names):
+            height_name[h] = n
+
+        # Step 3: Initialize an empty list to store the sorted names.
+        new_list = []
+
+        # Step 4: Sort the heights in descending order, and then append the corresponding names to the list.
+        # The sorted function sorts the heights in ascending order by default, so we use reversed to reverse the order.
+        for h in reversed(sorted(height_name)):
+            new_list.append(height_name[h])
+
+        # Step 5: Return the list of names sorted by their corresponding heights in descending order.
+        return new_list
+
+
+        # Below is an alternative approach using a nested loop to sort both the names and heights simultaneously.
+        # This approach has been commented out in favor of the more optimized dictionary approach above.
+        
+        # for i in range(len(names)):
+        #     for j in range(1+i,len(names)):
+        #         if heights[i] < heights[j]:
+        #             names[i], names[j] = names[j], names[i]
+        #             heights[i], heights[j] = heights[j], heights[i]
+        # return names
