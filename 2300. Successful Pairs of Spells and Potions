@@ -1,0 +1,60 @@
+#2300. Successful Pairs of Spells and Potions
+class Solution(object):
+    def successfulPairs(self, spells, potions, success):
+        # Sort the potions array to use binary search in the optimized solution
+        potions.sort()
+        # Initialize the result list to store the number of successful pairs for each spell
+        res = []
+        
+        # Iterate through each spell in the spells list
+        for s in spells:
+            # Initialize binary search pointers
+            left = 0
+            right = len(potions) - 1
+            # Initialize the index to the length of the potions array
+            index = len(potions)
+            
+            # Perform binary search to find the first potion that, when multiplied by the spell, meets or exceeds the success value
+            while left <= right:
+                mid = (left + right) // 2
+                if s * potions[mid] >= success:
+                    # If the product is greater than or equal to success, move the right pointer to the left
+                    right = mid - 1
+                    # Update the index to the current midpoint
+                    index = mid
+                else:
+                    # If the product is less than success, move the left pointer to the right
+                    left = mid + 1
+            
+            # Calculate the number of successful pairs and add to the result list
+            res.append(len(potions) - index)
+        
+        # Return the final result list
+        return res
+
+
+        # Brute-force approach (commented out):
+        # Initialize the result list to store the number of successful pairs for each spell
+        # res = []
+        # Sort the potions array to simplify the process of counting successful pairs
+        # potions.sort()
+        # Initialize a variable to store the current count of successful pairs
+        # current_value = 0
+        
+        # Iterate through each spell in the spells list
+        # for i in range(len(spells)):
+            # Iterate through each potion in the potions list
+            # for j in range(len(potions)):
+                # Check if the product of the current spell and potion meets or exceeds the success value
+                # if spells[i] * potions[j] >= success:
+                    # Calculate the number of successful pairs starting from this potion
+                    # current_value = len(potions) - j
+                    # Break out of the inner loop as we only need the first successful pair
+                    # break
+            # Append the count of successful pairs for the current spell to the result list
+            # res.append(current_value)
+            # Reset the current_value for the next spell
+            # current_value = 0
+        
+        # Return the final result list
+        # return res
