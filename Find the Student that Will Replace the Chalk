@@ -1,0 +1,36 @@
+class Solution(object):
+    def chalkReplacer(self, chalk, k):
+        # Step 1: Reduce k by the sum of chalk using modulo
+        # This ensures that we only consider the remainder after a complete distribution cycle.
+        # For instance, if k is much larger than the total amount of chalk, we only care about the remainder.
+        k %= sum(chalk)
+        
+        # Step 2: Iterate over each student's chalk requirement
+        # We go through each student's chalk requirement to find out who will run out of chalk first.
+        for i in range(len(chalk)):
+            # If k is less than the chalk needed by the current student, that student will be unable to get enough chalk
+            if k < chalk[i]:
+                return i  # Return the index of the student who will run out of chalk
+            
+            # Otherwise, reduce k by the amount of chalk the current student uses
+            k -= chalk[i]
+
+        # The commented-out code below is an alternative approach that was initially considered
+        # but the above logic with modulo is more efficient and concise.
+
+        # remaining = True
+        # if len(chalk) == 1:
+        #     remaining = False
+        #     return 0
+            
+        # total = sum(chalk)
+        # while k > total:
+        #     k -= total
+        # while remaining:
+        #     for i in range(len(chalk)):
+        #         if k >= chalk[i]:
+        #             k -= chalk[i]
+        #         else:
+        #             if k < chalk:
+        #                 remaining = False
+        #                 return i 
