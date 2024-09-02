@@ -1,0 +1,46 @@
+from collections import defaultdict
+
+class Solution(object):
+    def findLucky(self, arr):
+        # Initialize defaultdict to store frequency counts
+        frequency = defaultdict(int)
+        # Initialize final_value to -1 (default value if no lucky number is found)
+        final_value = -1
+        
+        # Count the frequency of each item in the list
+        for item in arr:
+            # Increment the count of the item in the frequency dictionary
+            if item in arr:
+                frequency[item] += 1
+
+        # Iterate through the frequency dictionary to find the lucky number
+        for value, key in frequency.items():
+            # Check if the value matches its count
+            if value == key:
+                final_value = value
+        
+        return final_value
+
+        # Alternative approach using a regular dictionary
+        # Initialize a regular dictionary to store frequency counts
+        # frequency = {}
+        # Initialize a variable to store the lucky number
+        # a = 0
+        
+        # Count frequency of each item in the list
+        # for item in arr:
+        #     if item in frequency:
+        #         frequency[item] += 1
+        #     else:
+        #         frequency[item] = 1
+
+        # Iterate through the frequency dictionary to find the lucky number
+        # for value, key in frequency.items():
+        #     if value == key:
+        #         a = value
+        
+        # Return the lucky number or -1 if not found
+        # if a:
+        #     return a
+        # else:
+        #     return -1
