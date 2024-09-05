@@ -1,0 +1,30 @@
+class Solution(object):
+    def containsDuplicate(self, nums):
+        # Initialize an empty set to keep track of unique elements
+        hashset = set()
+        
+        # Iterate through each element in the list 'nums'
+        for i in nums:
+            # Check if the element is already in the set
+            if i in hashset:
+                # If it is, return True because a duplicate is found
+                return True
+            # If the element is not in the set, add it to the set
+            hashset.add(i)
+        
+        # If no duplicates are found after checking all elements, return False
+        return False
+
+    def containsDuplicateSorted(self, nums):
+        # Sort the list 'nums' in non-decreasing order
+        nums.sort()
+        
+        # Iterate through the sorted list starting from the second element
+        for i in range(1, len(nums)):
+            # Check if the current element is the same as the previous element
+            if nums[i] == nums[i - 1]:
+                # If it is, return True because a duplicate is found
+                return True
+        
+        # If no duplicates are found after checking all elements, return False
+        return False
