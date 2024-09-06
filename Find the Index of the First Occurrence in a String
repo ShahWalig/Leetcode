@@ -1,0 +1,22 @@
+class Solution(object):
+    def strStr(self, main_string, sub_string):
+        """
+        This method finds the index of the first occurrence of the substring 'sub_string'
+        in the string 'main_string'. If 'sub_string' is not found, it returns -1.
+
+        :param main_string: The string to be searched.
+        :param sub_string: The substring to search for.
+        :return: The index of the first occurrence of 'sub_string', or -1 if not found.
+        """
+        sub_length = len(sub_string)  # Get the length of the substring
+        if sub_length == 0:  # If substring is empty, return 0 (by convention)
+            return 0
+
+        # Iterate through the main_string
+        for start_index in range(len(main_string) - sub_length + 1):  # Loop until main_string has fewer characters than sub_string
+            # Compare the substring of length 'sub_length' starting from 'start_index' with 'sub_string'
+            if main_string[start_index:start_index + sub_length] == sub_string:  # Slicing the main_string to compare with sub_string
+                return start_index  # Return the starting index if a match is found
+        
+        # If the sub_string is not found, return -1
+        return -1
