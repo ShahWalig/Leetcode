@@ -1,0 +1,24 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        This method checks if a given string 's' is a palindrome, considering only alphanumeric characters
+        and ignoring cases.
+        
+        :param s: Input string
+        :return: True if the string is a palindrome, False otherwise
+        """
+        clean_string = ''  # Initialize an empty string to store the alphanumeric characters
+        
+        # Loop through each character in the input string
+        for char in s:
+            # Check if the character is either an alphabet or a digit
+            if char.isalpha() or char.isdigit():
+                clean_string += char  # Append the character to 'clean_string'
+        
+        # Convert the cleaned string to lowercase for case-insensitive comparison
+        clean_string = clean_string.lower()
+        
+        # Check if the cleaned string is equal to its reverse
+        if clean_string == clean_string[::-1]:
+            return True  # Return True if the string is a palindrome
+        return False  # Return False if the string is not a palindrome
