@@ -1,0 +1,28 @@
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        # Create a dummy node to use as the starting point of the result linked list
+        dummy = ListNode()
+        cur = dummy  # 'cur' will point to the current node in the result linked list
+        r = 0  # Initialize carry to 0
+        
+        # Loop through both linked lists until both are fully processed and carry is handled
+        while l1 or l2 or r:
+            # Get the values from l1 and l2, default to 0 if any list has been fully traversed
+            list1 = l1.val if l1 else 0
+            list2 = l2.val if l2 else 0
+            
+            # Calculate the sum of the two digits and the carry
+            val = list2 + list1 + r
+            r = val // 10  # Update carry for the next iteration
+            val = val % 10  # Current digit is the remainder
+            
+            # Add the new digit to the result linked list
+            cur.next = ListNode(val)
+            cur = cur.next  # Move to the next node
+            
+            # Move to the next nodes in l1 and l2, if available
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        
+        # Return the next of dummy, which is the head of the result linked list
+        return dummy.next
