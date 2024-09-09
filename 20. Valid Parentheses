@@ -1,0 +1,19 @@
+class Solution(object):
+    def isValid(self, s):
+        stack = []  # Initialize an empty stack to keep track of open brackets
+        close_open = {"}": "{", "]": "[", ")": "("}  # Mapping of closing to corresponding opening brackets
+
+        # Loop through each character in the string
+        for i in s:
+            # If the character is a closing bracket
+            if i in close_open:
+                # Check if the stack is not empty and the top of the stack matches the corresponding opening bracket
+                if stack and stack[-1] == close_open[i]:
+                    stack.pop()  # Pop the top element from the stack if it's a valid pair
+                else:
+                    return False  # If not a valid pair, return False
+            else:
+                stack.append(i)  # If it's an opening bracket, push it to the stack
+
+        # If the stack is empty at the end, it means all brackets were valid and matched
+        return True if not stack else False  # Return True if stack is empty, otherwise False
