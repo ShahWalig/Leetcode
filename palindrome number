@@ -1,0 +1,25 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        if x < 0:return False
+
+        divide = 1
+        while x>= 10 * divide:
+            divide *= 10
+
+        while x:
+            right = x % 10
+            left = x // divide
+            if left != right: return False
+            x  = (x % divide) // 10
+            divide = divide /100
+        return True
+
+
+
+
+        # x = str(x)
+        # y = x[::-1]
+        # return x==y
+
+
+        
