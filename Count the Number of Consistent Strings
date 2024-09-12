@@ -1,0 +1,25 @@
+class Solution(object):
+    def countConsistentStrings(self, allowed, words):
+        # Initialize a counter for consistent strings
+        res = 0
+        
+        # Convert the 'allowed' string into a set for faster lookup
+        allowed_set = set(allowed) 
+        
+        # Loop through each word in the 'words' list
+        for word in words:
+            add = True  # Assume the word is consistent initially
+            
+            # Loop through each character in the current word
+            for char in word:
+                # If the character is not in the allowed set, the word is inconsistent
+                if char not in allowed_set:
+                    add = False  # Mark the word as inconsistent
+                    break  # Exit the loop as we found an invalid character
+            
+            # If the word is consistent (no invalid characters), increment the count
+            if add:
+                res += 1
+        
+        # Return the total number of consistent strings
+        return res
