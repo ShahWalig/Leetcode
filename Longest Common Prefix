@@ -1,0 +1,18 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        # Initialize an empty string to store the result
+        res = ''
+        
+        # Loop through each character index of the first string in the list
+        for i in range(len(strs[0])):
+            # Loop through each string in the list
+            for j in strs:
+                # If the index exceeds the length of the current string 
+                # or the character at the current index doesn't match the first string, return the result
+                if i == len(j) or j[i] != strs[0][i]:
+                    return res 
+            # If the characters match for all strings, add the character to the result
+            res += strs[0][i]
+        
+        # Return the result after all characters are processed
+        return res
