@@ -1,0 +1,40 @@
+class Solution(object):
+    def threeSum(self, nums):
+        # Result list to store all unique triplets
+        res = []
+        
+        # Sort the array to simplify finding triplets
+        nums.sort()
+
+        # Loop through the array, using each number as a potential first element of a triplet
+        for i, a in enumerate(nums):
+            # Skip duplicate elements to avoid repeated triplets
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+
+            # Initialize two pointers: one just after 'i' and one at the end of the list
+            left = i + 1
+            right = len(nums) - 1
+
+            # Loop while the two pointers haven't crossed each other
+            while left < right:
+                # Calculate the sum of the triplet
+                three_sum = a + nums[left] + nums[right]
+
+                # If the sum is greater than zero, move the right pointer left to reduce the sum
+                if three_sum > 0:
+                    right -= 1
+                # If the sum is less than zero, move the left pointer right to increase the sum
+                elif three_sum < 0:
+                    left += 1
+                # If the sum equals zero, we found a valid triplet
+                else:
+                    # Add the triplet to the result list
+                    res.append([a, nums[left], nums[right]])
+                    # Move the left pointer and skip over any duplicates
+                    left += 1
+                    while left < right and nums[left] == nums[left - 1]:
+                        left += 1
+
+        # Return the list of triplets
+        return res
