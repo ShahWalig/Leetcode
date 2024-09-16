@@ -1,0 +1,26 @@
+class Solution(object):
+    def romanToInt(self, s):
+        # Dictionary to map Roman numerals to their integer values
+        roman = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+        }
+        
+        total = 0  # Initialize total to store the result
+        
+        # Iterate through the string, checking pairs of Roman numerals
+        for i in range(len(s) - 1):
+            # If the current numeral is less than the next, subtract its value
+            if roman[s[i]] < roman[s[i+1]]:
+                total -= roman[s[i]]
+            # Otherwise, add its value to the total
+            else:
+                total += roman[s[i]]
+        
+        # Add the value of the last Roman numeral to the total
+        return total + roman[s[-1]]
