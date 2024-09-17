@@ -1,0 +1,58 @@
+from collections import defaultdict
+
+class Solution(object):
+    def uncommonFromSentences(self, s1, s2):
+        # Using defaultdict to find uncommon words
+        dic = defaultdict(int)
+        for i in s1.split():
+            dic[i] += 1
+        for i in s2.split():
+            dic[i] += 1
+        return {word for word, time in dic.items() if time == 1}
+
+        # Below are the commented out alternative implementations:
+
+        # dic = {}
+        # for word in s1.split():
+        #     dic[word] = dic.get(word, 0) + 1
+        # for word in s2.split():
+        #     dic[word] = dic.get(word, 0) + 1
+        # return [word for word in dic if dic[word] == 1]
+
+        # s1 = s1.split()
+        # s2 = s2.split()
+        # new_list = []
+        # dic = {}
+        # for i in s1:
+        #     if i not in dic:
+        #         dic[i] = 1
+        #     else:
+        #         dic[i] += 1
+
+        # for i in s2:
+        #     if i not in dic:
+        #         dic[i] = 1
+        #     else:
+        #         dic[i] += 1
+
+        # for word, time in dic.items():
+        #     if time == 1:
+        #         new_list.append(word)
+        # return new_list
+
+        # s1 = s1.split()
+        # s2 = s2.split()
+        # new_list = []
+        # dic = defaultdict(int)
+
+        # for i in s1:
+        #     dic[i] += 1
+
+        # for i in s2:
+        #     dic[i] += 1
+
+        # for word, time in dic.items():
+        #     if time == 1:
+        #         new_list.append(word)
+
+        # return new_list
