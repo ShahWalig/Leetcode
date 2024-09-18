@@ -1,0 +1,24 @@
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        # The index of the last element in the merged array
+        last = m + n - 1
+
+        # While there are elements to compare in both arrays
+        while m > 0 and n > 0:
+            # Compare the last elements of both arrays
+            if nums1[m - 1] > nums2[n - 1]:
+                # Place the larger element in the end of nums1
+                nums1[last] = nums1[m - 1]
+                m -= 1  # Move the pointer in nums1
+            else:
+                # Place the larger element in the end of nums1
+                nums1[last] = nums2[n - 1]
+                n -= 1  # Move the pointer in nums2
+            last -= 1  # Move the pointer in the merged array
+
+        # If there are remaining elements in nums2
+        while n > 0:
+            # Place remaining elements from nums2 in nums1
+            nums1[last] = nums2[n - 1]
+            n -= 1
+            last -= 1
