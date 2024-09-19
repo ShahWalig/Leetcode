@@ -1,0 +1,12 @@
+class Solution(object):
+    def searchInsert(self, nums, target):
+        # Iterate over the list with index and value
+        for index, value in enumerate(nums):
+            # If the current value matches the target, return the index
+            if value == target:
+                return index
+            # If the current value is greater than the target, return the index
+            elif value > target:
+                return index
+        # If the target is greater than all elements, return the length of the list
+        return len(nums)
