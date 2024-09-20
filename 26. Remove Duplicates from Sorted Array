@@ -1,0 +1,27 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        Removes duplicates from a sorted list `nums` in-place, 
+        such that each unique element appears only once. 
+        Returns the length of the unique elements' portion of the list.
+        
+        Parameters:
+        nums (List[int]): A sorted list of integers.
+        
+        Returns:
+        int: The length of the list with unique elements.
+        """
+        # Initialize `left` pointer to 1 as the first element is always unique.
+        left = 1
+        
+        # Loop through the list starting from the second element.
+        for i in range(1, len(nums)):
+            # If current element is different from the previous unique element.
+            if nums[left - 1] != nums[i]:
+                # Update the element at `left` index with the new unique element.
+                nums[left] = nums[i]
+                # Move the `left` pointer to the next position.
+                left += 1
+        
+        # Return the count of unique elements.
+        return left
