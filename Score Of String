@@ -1,0 +1,15 @@
+class Solution(object):
+    def scoreOfString(self, s):
+        # Initialize a variable 'res' to store the cumulative score of the string.
+        res = 0
+        
+        # Iterate through the string up to the second last character.
+        # The reason for 'len(s) - 1' is to avoid going out of range when accessing 's[i+1]'.
+        for i in range(len(s) - 1):
+            # Calculate the absolute difference between the ASCII values of consecutive characters.
+            # ord(s[i]) gives the ASCII value of the current character and ord(s[i+1]) gives that of the next character.
+            # abs() is used to ensure the difference is always positive.
+            res += abs(ord(s[i]) - ord(s[i+1]))
+        
+        # Return the total score calculated from the string.
+        return res
