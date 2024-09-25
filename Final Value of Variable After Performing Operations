@@ -1,0 +1,23 @@
+class Solution(object):
+    def finalValueAfterOperations(self, operations):
+        """
+        Given a list of strings representing operations that either increment or decrement a variable,
+        this function calculates the final value of the variable starting from 0.
+        
+        :param operations: List of strings with operations like '--X', 'X--', '++X', 'X++'
+        :return: The final value of the variable after all operations are applied.
+        """
+        # Initialize the result variable to 0
+        res = 0
+        
+        # Iterate over each operation in the input list
+        for i in operations:
+            # If the operation is decrement (--X or X--)
+            if i == '--X' or i == 'X--':
+                res -= 1  # Decrease the result by 1
+            else:
+                # Otherwise, the operation is increment (++X or X++)
+                res += 1  # Increase the result by 1
+        
+        # Return the final result after applying all operations
+        return res
