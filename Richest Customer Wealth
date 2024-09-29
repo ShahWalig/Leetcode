@@ -1,0 +1,14 @@
+class Solution(object):
+    def maximumWealth(self, accounts):
+        # Initialize a variable to keep track of the largest wealth
+        large = 0
+        
+        # Loop through each customer's account (each 'i' is a list of bank balances)
+        for i in accounts:
+            # Check if the current customer's total wealth is greater than the current largest wealth
+            if large < sum(i):
+                # If it is, update 'large' to be this customer's total wealth
+                large = sum(i)
+        
+        # Return the largest wealth found
+        return large
