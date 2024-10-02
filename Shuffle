@@ -1,0 +1,13 @@
+def shuffle(self, nums, n):
+    # Create a new empty list to store the shuffled elements
+    new_list = []
+
+    # Loop through the first half of the list (n elements)
+    for i in range(n):
+        # Add the element from the first half to the new list
+        new_list.append(nums[i])
+        # Add the corresponding element from the second half to the new list
+        new_list.append(nums[i+n])
+
+    # Return the newly created shuffled list
+    return new_list
