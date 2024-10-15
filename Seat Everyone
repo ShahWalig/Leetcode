@@ -1,0 +1,30 @@
+class Solution(object):
+    def minMovesToSeat(self, seats, students):
+        """
+        This function calculates the minimum number of moves required
+        to seat all students in the corresponding seats. 
+        The goal is to minimize the distance between the students and their assigned seats.
+        
+        seats: List of integers representing the seat positions.
+        students: List of integers representing the student positions.
+        
+        Steps:
+        1. Sort both the seats and students lists to match students with the closest available seats.
+        2. Iterate through the sorted lists and calculate the absolute difference 
+           between each corresponding seat and student position.
+        3. Sum up the differences to get the minimum total moves required.
+        """
+        
+        # Sort seats and students to align each student with the closest seat.
+        seats.sort()
+        students.sort()
+
+        # Initialize result to store the total number of moves.
+        res = 0
+
+        # Calculate the total minimum moves by comparing each seat-student pair.
+        for i in range(len(seats)):
+            res += abs(seats[i] - students[i])
+        
+        # Return the total number of moves.
+        return res
