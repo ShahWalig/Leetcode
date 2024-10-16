@@ -1,0 +1,10 @@
+class Solution(object):
+    def differenceOfSums(self, n, m):
+        num1 = num2 = 0
+        for i in range(1, n + 1):
+            if i % m == 0:
+                num2 += i  # Add the value of i to num2 if divisible by m
+            else:
+                num1 += i  # Add the value of i to num1 if not divisible by m
+
+        return num1 - num2  # Return the difference between the two sums
